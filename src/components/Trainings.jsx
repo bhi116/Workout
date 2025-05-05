@@ -45,12 +45,12 @@ export default function Customers() {
     // poista harjoitus
     const deleteTraining = (url) => {
         if (window.confirm("Are you sure?")) {
-        fetch(url, {method: 'DELETE'})
-        .then(response => {
-            setOpen(true);
-            fetchData()})
-        .catch(err => console.error(err))
-      }
+            fetch(url, {method: 'DELETE'})
+            .then(response => {
+                setOpen(true);
+                fetchData()})
+            .catch(err => console.error(err))
+        }
     }
 
     // tallennetaan uusi harjoitus
@@ -86,10 +86,10 @@ export default function Customers() {
     
 
     return (
-        <div>
+        <div style={{ padding: '15px', fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif' }}>
             <h1>Trainings</h1>
             <Addtraining saveTraining={saveTraining} />
-            <div style={{ height: '600px', width: '99vw'}}>
+            <div style={{ height: '600px', width: '100%'}}>
                 <AgGridReact 
                     ref={gridRef}
                     onGridReady={ params => gridRef.current = params.api }

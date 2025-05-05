@@ -34,7 +34,7 @@ export default function Home() {
     useEffect(() => fetchData(), []);
 
     return (
-        <div>
+        <div style={{ padding: '15px', fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif' }}>
            <h1>Moi</h1>
             <Button variant="contained" color="primary" onClick={resetDatabase}>
                 Reset Database

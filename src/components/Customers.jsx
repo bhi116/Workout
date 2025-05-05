@@ -44,12 +44,12 @@ export default function Customers() {
     // poista asiakas
     const deleteCustomer = (url) => {
         if (window.confirm("Are you sure?")) {
-        fetch(url, {method: 'DELETE'})
-        .then(response => {
-            setOpen(true);
-            fetchData()})
-        .catch(err => console.error(err))
-      }
+            fetch(url, {method: 'DELETE'})
+            .then(response => {
+                setOpen(true);
+                fetchData()})
+            .catch(err => console.error(err))
+        }
     }
 
     // päivitetään asiakkaan tiedot
@@ -69,6 +69,19 @@ export default function Customers() {
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') return;
         setOpen(false);
+    };
+
+    // asiakkaan CSV tiedot
+    const exportToCsv = () => {
+        if (gridRef.current) {
+            gridRef.current.api.exportDataAsCsv({
+                fileName: 'customers.csv',
+                columnKeys: [
+                'firstname', 'lastname', 'streetaddress', 
+                'postcode', 'city', 'email', 'phone'
+                ]
+            });
+        }
     };
 
     const columns = [
@@ -92,13 +105,21 @@ export default function Customers() {
     ]
 
     return (
-        <div>
+        <div style={{ padding: '15px', fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif' }}>
             <h1>Customers</h1>
             <Addcustomer saveCustomer={saveCustomer} />
-            <div style={{ height: '600px', width: '99vw'}}>
+            <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={exportToCsv}
+            style={{ margin: '10px' }}
+            >
+            Export CSV
+            </Button>
+            <div style={{ height: '600px', width: '100%'}}>
                 <AgGridReact 
                     ref={gridRef}
-                    onGridReady={ params => gridRef.current = params.api }
+                    onGridReady={ params => gridRef.current = params }
                     rowData={customers}
                     columnDefs={columns}
                     rowSelection={{ mode: 'singleRow', checkboxes: false }}
