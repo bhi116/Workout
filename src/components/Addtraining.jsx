@@ -75,19 +75,19 @@ export default function Addtraining(props) {
                         <TextField
                             required
                             margin="dense"
-                            name="duration"
-                            value={training.duration}
+                            name="date"
+                            type="datetime-local"
+                            value={training.date}
                             onChange={e => handleInputChange(e)}
-                            label="Duration"
                             fullWidth
                         />
                         <TextField
                             required
                             margin="dense"
-                            name="date"
-                            type="datetime-local"
-                            value={training.date}
+                            name="duration"
+                            value={training.duration}
                             onChange={e => handleInputChange(e)}
+                            label="Duration"
                             fullWidth
                         />
                         {loading ? (

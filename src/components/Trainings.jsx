@@ -72,9 +72,9 @@ export default function Customers() {
     };
     
     const columns = [
+        {headerName: 'Activity', field: 'activity'},
         {headerName: 'Date', field: 'date', valueFormatter: params => dayjs(params.value).format('DD.MM.YYYY HH:mm')},
         {headerName: 'Duration', field: 'duration'},
-        {headerName: 'Activity', field: 'activity'},
         {headerName: 'Customer', field: 'customerName'},
         {headerName: '', filter: false, sortable: false, width: 100,
             field: '_links.self.href', cellStyle: { display: 'flex', justifyContent: 'center', alignItems: 'center' },

@@ -88,10 +88,10 @@ export default function Customers() {
         {headerName: 'Firstname', field: 'firstname'},
         {headerName: 'Lastname', field: 'lastname'},
         {headerName: 'Streetaddress', field: 'streetaddress'},
-        {headerName: 'Postcode', field: 'postcode'},
-        {headerName: 'City', field: 'city'},
+        {headerName: 'Postcode', field: 'postcode', width: 120},
+        {headerName: 'City', field: 'city', width: 130},
         {headerName: 'Email', field: 'email'},
-        {headerName: 'Phone', field: 'phone'},
+        {headerName: 'Phone', field: 'phone', width: 120},
         {headerName: '', field: 'edit', filter: false, sortable: false,
             width: 100, cellStyle: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
             cellRenderer: (params) => <Editcustomer updateCustomer={updateCustomer}
