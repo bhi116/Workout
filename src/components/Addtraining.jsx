@@ -91,24 +91,26 @@ export default function Addtraining(props) {
                             fullWidth
                         />
                         {loading ? (
+                            // jos asiakkaita edelleen ladataan (loading = true) näytetään teksti
                             <p>Loading customers...</p>
                         ) : (
-                        <FormControl fullWidth required>
-                            <InputLabel>Customer</InputLabel>
-                            <Select
-                                name="customer"
-                                value={training.customer || ''}
-                                onChange={e => handleCustomerChange(e)}
-                                label="Customer"
-                            >
-                                {customers.map((customer) => (
-                                    <MenuItem key={customer.id} value={customer._links.self.href}>
-                                        {`${customer.firstname} ${customer.lastname}`}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                    )}
+                            // kun asiakkaat on ladattu, näytetään pudotusvalikko
+                            <FormControl fullWidth required>
+                                <InputLabel>Customer</InputLabel>
+                                <Select
+                                    name="customer"
+                                    value={training.customer || ''}
+                                    onChange={e => handleCustomerChange(e)}
+                                    label="Customer"
+                                >
+                                    {customers.map((customer) => (
+                                        <MenuItem key={customer.id} value={customer._links.self.href}>
+                                            {`${customer.firstname} ${customer.lastname}`}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        )}
 
                     </DialogContent>
                 <DialogActions>
