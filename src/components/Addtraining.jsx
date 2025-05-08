@@ -44,8 +44,8 @@ export default function Addtraining(props) {
     }
 
     const handleCustomerChange = (event) => {
-        const selectedCustomerId = event.target.value;
-        console.log('Valittu asiakas ID:', selectedCustomerId);
+        const selectedCustomerUrl = event.target.value;
+        console.log('Valittu asiakas URL:', selectedCustomerUrl);
         setTraining({...training, customer: event.target.value})
     }
 
